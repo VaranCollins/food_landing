@@ -1,0 +1,22 @@
+{
+  "name": "food_landing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VaranCollins/food_landing.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VaranCollins/food_landing/issues"
+  },
+  "homepage": "https://github.com/VaranCollins/food_landing#readme",
+  "devDependencies": {
+    "json-server": "^0.16.3"
+  }
+}

@@ -1,47 +1,48 @@
-function modal() {
-    // Modal window
-    const modalWindow = document.querySelector('.modal'),
-          modalBtns = document.querySelectorAll('[data-modal]');
+function openModal (modalSelector, modalTimerId) {
+    const modalWindow = document.querySelector(modalSelector);
+    modalWindow.classList.add('show');
+    modalWindow.classList.remove('hide');
+    document.body.style.overflow = 'hidden';
 
-    
-    function openModal () {
-        modalWindow.classList.add('show');
-        modalWindow.classList.remove('hide');
-        document.body.style.overflow = 'hidden';
+    if (modalTimerId) {
         clearInterval(modalTimerId);
     }
     
-    modalBtns.forEach(item => {
-        item.addEventListener('click', (e) => {
-            e.preventDefault();
-            openModal();
-        });
-    });
+}
+function closeModal (modalSelector) {
+    const modalWindow = document.querySelector(modalSelector);
+    modalWindow.classList.add('hide');
+    modalWindow.classList.remove('show');
+    document.body.style.overflow = '';
+}
+function modal(triggerSelector, modalSelector, modalTimerId) {
+    // Modal window
+    const modalWindow = document.querySelector(modalSelector),
+          modalBtns = document.querySelectorAll(triggerSelector);
+
     
-    function closeModal () {
-        modalWindow.classList.add('hide');
-        modalWindow.classList.remove('show');
-        document.body.style.overflow = '';
-    }
+    modalBtns.forEach(item => {
+        item.addEventListener('click', () => openModal(modalSelector, modalTimerId));
+    });
 
 
     modalWindow.addEventListener('click', (e) => {
         if (e.target === modalWindow || e.target.getAttribute('data-close') == '') {
-            closeModal();
+            closeModal(modalSelector);
         }
     });
     
     document.addEventListener('keydown', (e) => {
         if (e.code === 'Escape' && modalWindow.classList.contains('show')) {
-            closeModal();
+            closeModal(modalSelector);
         }
     });
 
-    const modalTimerId = setTimeout(openModal, 50000);
+ 
 
     function showModalByScroll() {
         if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight) {
-            openModal();
+            openModal(modalSelector, modalTimerId);
             window.removeEventListener('scroll', showModalByScroll);
         }
     }
@@ -50,4 +51,6 @@ function modal() {
 
 }
 
-module.exports = modal;
+export default modal;
+export {closeModal};
+export {openModal};

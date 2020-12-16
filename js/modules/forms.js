@@ -15,12 +15,9 @@ function forms(formSelector, modalTimerId) {
         bindPostData(form);
     });
 
-    
-
     function bindPostData(form) {
         form.addEventListener('submit', (e) =>  {
             e.preventDefault();
-
             const statusMessage = document.createElement('img');
             statusMessage.src = message.loading;
             statusMessage.style.cssText = `
@@ -30,7 +27,6 @@ function forms(formSelector, modalTimerId) {
             
             form.insertAdjacentElement('afterend', statusMessage);
        
-
             const formData = new FormData(form);
       
             const json = JSON.stringify(Object.fromEntries(formData.entries()));
@@ -45,7 +41,6 @@ function forms(formSelector, modalTimerId) {
             }).finally(() => {
                 form.reset();
             });
-
         });
     }
 
@@ -72,7 +67,6 @@ function forms(formSelector, modalTimerId) {
             closeModal('.modal');
         }, 4000);
     }
-
 }
 
 export default forms;

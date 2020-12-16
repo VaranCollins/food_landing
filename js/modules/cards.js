@@ -21,6 +21,7 @@ class MenuCard {
 
     render() {
         const element = document.createElement('div');
+
         if (this.classes.length === 0) {
             this.element = 'menu__item';
             element.classList.add(this.element);
@@ -38,12 +39,10 @@ class MenuCard {
                     <div class="menu__item-total"><span>${this.price}</span> грн/день</div>
                 </div>
         `;
+
         this.parent.append(element);
     }
 }
-
-
-
 
 getResource('http://localhost:3000/menu')
     .then(data => {
@@ -51,15 +50,6 @@ getResource('http://localhost:3000/menu')
             new MenuCard(img, altimg, title, descr, price, '.menu .container').render();
         });
     });
-
-// axios.get('http://localhost:3000/menu')
-//     .then(data => {
-//         data.data.forEach(({img, altimg, title, descr, price}) =>{
-//             new MenuCard(img, altimg, title, descr, price, '.menu .container').render();
-//         });
-//     });
-
-
 }
 
 export default cards;

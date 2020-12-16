@@ -7,7 +7,6 @@ import form from './modules/forms';
 import slider from './modules/slider';
 import openModal from './modules/modal';
 
-
 window.addEventListener('DOMContentLoaded', () => {
     const modalTimerId = setTimeout(() => openModal('.modal', modalTimerId), 50000);
     tabs('.tabheader__item', '.tabcontent', '.tabheader__items', 'tabheader__item_active');
@@ -25,7 +24,5 @@ window.addEventListener('DOMContentLoaded', () => {
         currentCounter: '#current',
         wrapper: '.offer__slider-wrapper',
         field: '.offer__slider-inner'
-
-
     });
 });
